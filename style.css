@@ -98,7 +98,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 991px)and (min-width:768px) {
+@media (max-width: 1114px)and (min-width:768px) {
 
   /* Tablet */
   .carousel-item {
@@ -122,6 +122,10 @@
     height: 8vh;
     object-fit: cover;
   }
+  .offcanvas-cart{
+    width: 75%;
+  }
+
 }
 
 @media (max-width: 1800px)and (min-width:1115px) {
@@ -130,9 +134,25 @@
     height: 9vh;
     object-fit: cover;
   }
+  .offcanvas-cart{
+    width: 30%;
+  }
 
 }
  footer a:hover {
     color: #28a745;
     text-decoration: underline;
   }
+.active-cart{
+  width: 18px;
+  height: 18px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  right: -15%;
+}

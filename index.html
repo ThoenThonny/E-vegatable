@@ -44,7 +44,10 @@
           </ul>
           <form class="d-flex align-items-center mt-3 mt-md-0 gap-2" role="search">
             <input class="form-control mt-2" type="search" placeholder="Search" aria-label="Search" />
-            <i class="bi bi-shop fs-2"></i>
+            <div class=" position-relative">
+              <i style="cursor: pointer;" class="bi bi-shop fs-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"></i>
+              <div class=" active-cart">0</div>
+            </div>
           </form>
         </div>
       </div>
@@ -78,7 +81,7 @@
       <div class="carousel-caption">
         <h1>Fresh & Organic Vegetables</h1>
         <p>Order your daily fresh vegetables delivered to your doorstep.</p>
-        <a href="#" class="btn btn-success btn-lg mt-3">Shop Now</a>
+        <a href="#menu" class="btn btn-success btn-lg mt-3">Shop Now</a>
       </div>
     </div>
 
@@ -93,69 +96,9 @@
   <!-- Menu -->
   <div id="menu" class=" container-fluid py-5">
     <h2 class=" mb-4">Our Fresh Vegetables</h2>
-    <div class="row g-4">
-      <!-- Card 1 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card  h-auto pb-4 shadow-sm">
-          <img style="height: 55%;" class=" object-fit-cover"
-            src="https://www.foxyfolksy.com/wp-content/uploads/2018/11/mixed-vegetables-with-quail-eggs-640.jpg" alt="">
-          <div class=" w-100 px-2 py-2">
-            <h5 class="card-title">Mixed Vegetables</h5>
-            <p class="card-text flex-grow-1">A mix of fresh vegetables for your daily meals.</p>
-            <p class="text-success fw-semibold fs-5">$1.5</p>
-          </div>
-          <div class=" w-100 px-2">
-            <a href="#" class="btn btn-primary mt-auto w-100">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card  h-auto pb-4 shadow-sm">
-          <img style="height: 55%;" class=" object-fit-cover"
-            src="https://www.foxyfolksy.com/wp-content/uploads/2018/11/mixed-vegetables-with-quail-eggs-640.jpg" alt="">
-          <div class=" w-100 px-2 py-2">
-            <h5 class="card-title">Mixed Vegetables</h5>
-            <p class="card-text flex-grow-1">A mix of fresh vegetables for your daily meals.</p>
-            <p class="text-success fw-semibold fs-5">$1.5</p>
-          </div>
-          <div class=" w-100 px-2">
-            <a href="#" class="btn btn-primary mt-auto w-100">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card  h-auto pb-4 shadow-sm">
-          <img style="height: 55%;" class=" object-fit-cover"
-            src="https://www.foxyfolksy.com/wp-content/uploads/2018/11/mixed-vegetables-with-quail-eggs-640.jpg" alt="">
-          <div class=" w-100 px-2 py-2">
-            <h5 class="card-title">Mixed Vegetables</h5>
-            <p class="card-text flex-grow-1">A mix of fresh vegetables for your daily meals.</p>
-            <p class="text-success fw-semibold fs-5">$1.5</p>
-          </div>
-          <div class=" w-100 px-2">
-            <a href="#" class="btn btn-primary mt-auto w-100">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card  h-auto pb-4 shadow-sm">
-          <img style="height: 55%;" class=" object-fit-cover"
-            src="https://www.foxyfolksy.com/wp-content/uploads/2018/11/mixed-vegetables-with-quail-eggs-640.jpg" alt="">
-          <div class=" w-100 px-2 py-2">
-            <h5 class="card-title">Mixed Vegetables</h5>
-            <p class="card-text flex-grow-1">A mix of fresh vegetables for your daily meals.</p>
-            <p class="text-success fw-semibold fs-5">$1.5</p>
-          </div>
-          <div class=" w-100 px-2">
-            <a href="#" class="btn btn-primary mt-auto w-100">Add to Cart</a>
-          </div>
-        </div>
-      </div>
+    <div  id="show-products" class="row g-4">
+      
+      
     </div>
   </div>
   </div>
@@ -237,9 +180,57 @@
     </div>
   </footer>
 
+<!-- Offcanvas Cart Payments -->
+<div class="offcanvas offcanvas-end  offcanvas-cart" tabindex="-1" id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title fw-semibold" id="offcanvasRightLabel"><i class="bi bi-cart3 me-2"></i>My Cart</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
 
+  <div class="offcanvas-body d-flex flex-column">
+
+    <!-- Cart Items -->
+    <div class="cart-items flex-grow-1 overflow-auto pe-2">
+     
+
+      <!-- Item 2 -->
+      <div class="d-flex align-items-center border-bottom pb-3 mb-3">
+        <img src="https://img.freepik.com/free-photo/organic-tomatoes_144627-15857.jpg"
+          class="rounded" style="width: 70px; height: 70px; object-fit: cover;" alt="">
+        <div class="ms-3 flex-grow-1">
+          <h6 class="mb-1">Tomatoes</h6>
+          <p class="text-success fw-semibold mb-1">$2.00</p>
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-sm btn-outline-secondary">-</button>
+            <span>2</span>
+            <button class="btn btn-sm btn-outline-secondary">+</button>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-outline-danger ms-2"><i class="bi bi-trash"></i></button>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="border-top pt-3">
+      <div class="d-flex justify-content-between">
+        <span>Subtotal</span>
+        <span class="fw-semibold">$5.50</span>
+      </div>
+      <div class="d-flex justify-content-between">
+        <span>Delivery</span>
+        <span class="fw-semibold">$1.00</span>
+      </div>
+      <div class="d-flex justify-content-between fs-5 fw-bold mt-2">
+        <span>Total</span>
+        <span>$6.50</span>
+      </div>
+      <button class="btn btn-success w-100 mt-3"><i class="bi bi-credit-card me-2"></i>Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
 
 
 </body>
-
+<script src="./data.js"></script>
 </html>
