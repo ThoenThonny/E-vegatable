@@ -58,8 +58,15 @@ const AddtoCart = (productId)=>{
   }else{
     cartItem.push({...products,qty:1})
   }
-  alert(`${products.name} Add To Cart`)
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: `${products.name} Add Your Cart`,
+  showConfirmButton: false,
+  timer: 1500
+});
   Updatecart()
+  
 }
 
 // update cart order
@@ -86,7 +93,7 @@ const Updatecart = ()=>{
         <span>Total</span>
         <span>$0</span>
       </div>
-      <button class="btn btn-success w-100 mt-3"><i class="bi bi-credit-card me-2"></i>Proceed to Checkout</button>`
+      <button onclick="Checkout()" class="btn btn-success w-100 mt-3"><i class="bi bi-credit-card me-2"></i>Proceed to Checkout</button>`
       document.getElementById("cart-sumary").innerHTML=show
   }else{
     cartItem.forEach(item=>{
@@ -98,12 +105,12 @@ const Updatecart = ()=>{
           <h6 class="mb-1">${item.name}</h6>
           <p class="text-success fw-semibold mb-1">${item.price} $</p>
           <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-sm btn-outline-secondary">-</button>
-            <span>2</span>
-            <button class="btn btn-sm btn-outline-secondary">+</button>
+            <button onclick="UpdateQty(${item.id}, -1)" class="btn btn-sm btn-outline-secondary">-</button>
+            <span>${item.qty}</span>
+            <button onclick="UpdateQty(${item.id},1)" class="btn btn-sm btn-outline-secondary">+</button>
           </div>
         </div>
-        <button class="btn btn-sm btn-outline-danger ms-2"><i class="bi bi-trash"></i></button>
+        <button onclick="RemoveCart(${item.id})" class="btn btn-sm btn-outline-danger ms-2"><i class="bi bi-trash"></i></button>
       </div>`
      
     })
@@ -122,11 +129,53 @@ const Updatecart = ()=>{
       </div>
       <div class="d-flex justify-content-between fs-5 fw-bold mt-2">
         <span>Total</span>
-        <span>${total} $</span>
+        <span>${total.toFixed(2)} $</span>
       </div>
-      <button class="btn btn-success w-100 mt-3"><i class="bi bi-credit-card me-2"></i>Proceed to Checkout</button>`
+      <button onclick="Checkout()" class="btn btn-success w-100 mt-3"><i class="bi bi-credit-card me-2"></i>Proceed to Checkout</button>`
     
     document.getElementById("cart-sumary").innerHTML=show
   }
 }
 
+// remove fromcart
+
+const RemoveCart = (productId)=>{
+  cartItem=cartItem.filter(i =>i.id !== productId);
+  Updatecart();
+}
+
+// Update Qty
+
+const UpdateQty = (productId,chang)=>{
+  const item = cartItem.find(i =>i.id === productId);
+  if(item){
+    item.qty+=chang;
+    if(item.qty<1){
+      RemoveCart(productId);
+    }else{
+      Updatecart();
+    }
+  }
+}
+
+// Checkout
+
+const Checkout = () =>{
+  if(cartItem.length === 0){
+    
+    Swal.fire({
+  icon: "error",
+  title: "Your Cart Is Empty",
+  text: "PLease Order Product!",
+  
+  });
+  }else{
+    cartItem=[]
+    Updatecart()
+    Swal.fire({
+  title: "Thank For Order",
+  text: "Nice To Meet You..",
+  icon: "success"
+});
+  }
+}
